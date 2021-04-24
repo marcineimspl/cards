@@ -1,0 +1,37 @@
+spring:
+    application:
+        name: cards
+    profiles:
+        active: production
+    datasource:
+        url: ${cards.datasource.url}
+        username: ${cards.datasource.username}
+        password: ${cards.datasource.password}
+        driver-class-name: ${cards.datasource.driver-class-name}
+    jpa:
+        properties:
+            hibernate:
+                dialect: ${cards.jpa.properties.hibernate.dialect}
+        database: ${cards.jpa.database}
+        show-sql: ${cards.jpa.show-sql}
+        hibernate:
+            ddl-auto: ${cards.jpa.hibernate.ddl-auto}
+
+# ACTUATOR INFO
+info:
+    app:
+        name: "Cards"
+        version: "0.0.1"
+        profile: ${spring.profiles.active}
+    serverInfo:
+        port: ${cards.server.port}
+
+eureka:
+    client: ${eureka-client}
+
+server:
+    port: 6666
+
+feign:
+    hystrix:
+        enabled: true
